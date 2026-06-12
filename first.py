@@ -1,0 +1,106 @@
+import streamlit as st
+quiz_data = [
+    {
+        "question": """निम्नलिखित कोड का आउटपुट क्या होगा ?
+        a=9 , b=5
+        a = a mod (a-3)
+        b = b mod (b-3)
+        print(a+b)
+        """,
+        "options": ["6", "4", "3", "64"],
+        "answer": "4"
+    },
+    {
+        "question": "एक प्रक्रिया (Process) को फ्लोचार्ट में किसके द्वारा व्यक्त किया जाता है ?",
+        "options": ["Lines","Diamond","Rectangle","Circle"],
+        "answer": "Rectangle"
+    },
+    {
+        "question": """प्रोग्रामिंग भाषा के पैराडिग्म (Paradigm) कितने प्रकार के होते हैं ?
+        (पैराडिग्म एक उपकरण और तकनीकों का उपयोग करके समस्या को हल करने काे हल करने का एक तरीका हैं ।)""",
+        "options": ["3", "4", "2", "7"],
+        "answer": "2"
+    },
+    {
+        "question":"""निम्नलिखित कोड का आउटपुट क्या होगा ?
+        a = set()
+        print(a.add([4,5]))        
+        """,
+        "options":["{4,5}","{0,0,0,0,0,4}","{0,0,0,0,5}","TypeError:"],
+        "answer":"TypeError:"
+    },
+    {
+        "question":"""सही विकल्प चुनियें 
+        str1 = "Python"
+        val = 123
+        """,
+        "options":["print(int(str1) + val)","print(str1 + val)","print(str1 + str(val))"," a और c दोनों"],
+        "answer":" a और c दोनों"
+    },
+    {
+        "question":"""निम्नलिखित कोड का आउटपुट क्या होगा ?
+        print("Hello","how are you?", sep="#")
+        """,
+        "options":["Hello how are you?#","#Hello how are you?","Hello#how are you?","TypeError:"],
+        "answer":"Hello#how are you?"
+    },
+    {
+        "question":"""निम्नलिखित कोड का आउटपुट क्या होगा ?
+        a = 45
+        b = "Hello"
+        print(a+b)
+        """,
+        "options":["45Hello","TypeError:","SyntaxError:","ValueError:"],
+        "answer":"TypeError:"
+    },
+    {
+        "question":"IDLE का full form क्या हैं?",
+        "options":["Integrated Developed and Learning Environment","Integrated Development and Learning Environmention","Integrated Development and Learning Environment","None of these"],
+        "answer":"Integrated Development and Learning Environment"
+    },
+    {
+        "question":"पायथन में Data Type Conversion कितने प्रकार का होता हैं?",
+        "options":["5","3","2","4"],
+        "answer":"2"
+    },
+    {
+         "question":"""निम्नलिखित कोड का आउटपुट क्या होगा ?
+         print(print(print("Hello")))
+         """,
+        "options":["TypeError","SyntaxError","HelloHelloHello","Hello None None"],
+        "answer":"Hello None None"
+    },
+    {
+         "question":"पायथन में कोड के ब्लाॅक को किससे डिफाइन किया जाता हैं?",
+        "options":["Slicing","Indention","loop","DataType"],
+        "answer":"Indention"
+    }
+]
+st.set_page_config(page_title="Python Question", layout="centered")
+st.title("Python Quiz Question Paper")
+st.write("Answer all questions and click **Submit** to see your score.")
+
+if "answers" not in st.session_state:
+    st.session_state.answers = {}
+
+for idx, q in enumerate(quiz_data):
+    st.subheader(f"Q{idx+1}: {q['question']}")
+    st.session_state.answers[idx] = st.radio(
+        label="Select your answer:",       
+        options=q["options"],
+        key=f"q_{idx}"
+    )
+
+if st.button("Submit"):
+    score = 0
+    st.write("Results:")
+    for idx, q in enumerate(quiz_data):
+        user_ans = st.session_state.answers[idx]
+        correct_ans = q["answer"]
+        if user_ans == correct_ans:
+            score += 1
+            st.success(f"Q{idx+1}: Correct ✅")
+        else:
+            st.error(f"Q{idx+1}: Wrong ❌ (Correct: {correct_ans})")
+    st.write(f" Your Score: {score} / {len(quiz_data)}")
+    
