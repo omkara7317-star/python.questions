@@ -1,4 +1,9 @@
 import streamlit as st
+st.set_page_config(page_title="Python Question", layout="centered")
+st.title(":rainbow[Python Quiz Question Paper]")
+st.write("Answer all questions and click **:red[Submit]** to see your score.👍👍")
+
+
 quiz_data = [
     {
         "question": """निम्नलिखित कोड का आउटपुट क्या होगा ?
@@ -74,11 +79,51 @@ quiz_data = [
          "question":"पायथन में कोड के ब्लाॅक को किससे डिफाइन किया जाता हैं?",
         "options":["Slicing","Indention","loop","DataType"],
         "answer":"Indention"
+    },
+    {
+        "question":"निम्नलिखित में से कौन सा कोड सही हैं ?",
+        "options":['print("Hello" * "3")','print("Hello" * 3)','print(Hello * 3)','print(Hello * "3")'],
+        "answer":'print("Hello" * 3)'
+    },
+    {
+        "question":"""निम्नलिखित कोड का आउटपुट क्या होगा ?
+        a = ["banana"]
+        b = ["BANANA"]
+        z = a
+        print(a is z)""",
+        "options":["False","True","TypeError:","SyntaxError:"],
+        "answer":"True"
+    },
+    {
+        "question":"""निम्नलिखित कोड का आउटपुट क्या होगा ?
+        a = (12 * 3 // 5)
+        b = (5 * (8 // 3))
+        print(a + b)
+        """,
+        "options":["0","11","17","10"],
+        "answer":"17"
+    },
+    {
+        "question":"""निम्नलिखित कोड का आउटपुट क्या होगा ?
+        x = 250
+        y = 200
+        if x > y :
+        print("x is greater then y")
+        """,
+        "options":["True","False","x is grater then y:","IndentError:"],
+        "answer":"IndentError:"
+    },
+    {
+        "question":"Infinite Loop से बाहर आने का Shortcut क्या हैं ?",
+        "options":["Ctrl + H","Ctrl + V","Ctrl + C","Ctrl + x"],
+        "answer":"Ctrl + C"
+    },
+    {
+        "question":"Range Function में कौन सा आगुर्मेन्ट(Argument) नही पाया जाता हैं ?",
+        "options":["Start","End","Step","Stop"],
+        "answer":"End"
     }
 ]
-st.set_page_config(page_title="Python Question", layout="centered")
-st.title("Python Quiz Question Paper")
-st.write("Answer all questions and click **Submit** to see your score.")
 
 if "answers" not in st.session_state:
     st.session_state.answers = {}
@@ -102,5 +147,10 @@ if st.button("Submit"):
             st.success(f"Q{idx+1}: Correct ✅")
         else:
             st.error(f"Q{idx+1}: Wrong ❌ (Correct: {correct_ans})")
+
     st.write(f" Your Score: {score} / {len(quiz_data)}")
+    if score >= 12:
+        st.header(" Pass 👌")
+    else:
+        st.header(':cry: Fail')
     
