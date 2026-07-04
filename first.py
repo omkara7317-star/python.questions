@@ -122,6 +122,33 @@ quiz_data = [
         "question":"Range Function में कौन सा आगुर्मेन्ट(Argument) नही पाया जाता हैं ?",
         "options":["Start","End","Step","Stop"],
         "answer":"End"
+    },
+    {
+        "question":"पायथन को आधिकारिक ( Officially ) तौर पर कब जारी किया गया था ?",
+        "options":["21 मार्च 1997","20 मई 1992","20 अप्रैल 1991","20 फरवरी 1991"],
+        "answer":"20 फरवरी 1991"
+    },
+    {
+        "question":"पायथन में डिफॉल्ट रूप से कितने built-in datatypes होते हैं ?",
+        "options":["12","15","14","16"],
+        "answer":"14"
+    },
+    {
+        "question":""" निम्न कोड का आउटपूट क्या होगा ?
+        a = { }
+        print(a)""",
+        "options":["set","tuple","dict","list"],
+        "answer":"dict"
+    },
+    {
+        "question":"स्लाईसिंग (Slicing) का प्रयोग करने का सही तरिका कौन सा हैं ?",
+        "options":["[start:stop:step]","[begin:end:step]","[start:end:step]","None of these"],
+        "answer":"[begin:end:step]"
+    },
+    {
+        "question":"Seprator (sep) का डिफॉल्ट value क्या होता हैं ?",
+        "options":["comma","semi-colon","space","dot"],
+        "answer":"space"
     }
 ]
 
