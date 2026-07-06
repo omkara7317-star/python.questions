@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 st.set_page_config(page_title="Python Question", layout="centered")
 st.title(":rainbow[Python Quiz Question Paper]")
 st.write("Answer all questions and click **:red[Submit]** to see your score.👍👍")
@@ -142,13 +143,39 @@ quiz_data = [
     },
     {
         "question":"स्लाईसिंग (Slicing) का प्रयोग करने का सही तरिका कौन सा हैं ?",
-        "options":["[start:stop:step]","[begin:end:step]","[start:end:step]","None of these"],
+        "options":["[start:stop:step]","[begin:end:step]","[start:end:step]","[None of these]"],
         "answer":"[begin:end:step]"
     },
     {
         "question":"Seprator (sep) का डिफॉल्ट value क्या होता हैं ?",
         "options":["comma","semi-colon","space","dot"],
         "answer":"space"
+    },
+    {
+        "question":"""निम्न कोड को आउटपूट क्याा होगा ?
+        print(5 + 8 * ((3*5)- 9)/10)
+        """,
+        "options":["9.0","9.8","10.4","5"],
+        "answer":"9.8"
+    },
+    {
+        "question":"""निम्न कोड का आउटपूट क्या होगा ?
+        l= list('HELLO')
+        p= l[0],l[-1],l[1:3]
+        print('a = {0},b= {1},c= {2}'.format(*p))
+        """,
+        "options":["Type Error","a= 'H',b= 'O',c= ['E','L']","a= 'O',b= 'L',c= (E,L)","a= 'H',b= 'O',c= ('E','L')"],
+        "answer":"a= 'H',b= 'O',c= ['E','L']"
+    },
+    {
+        "question":"मेम्बरशीप ऑपरेटर कितने होते हैं ?",
+        "options":["2","3","4","5"],
+        "answer":"2"
+    },
+    {
+        "question":"Iterative Statements कौन - कौन से हैं ?",
+        "options":["if , if-elif , if-elif-else","while , for","break , continue , pass","Nested if-else"],
+        "answer":"while , for"
     }
 ]
 
@@ -164,6 +191,8 @@ for idx, q in enumerate(quiz_data):
     )
 
 if st.button("Submit"):
+    with st.spinner("Loading... Please wait"):
+        time.sleep(5)  
     score = 0
     st.write("Results:")
     for idx, q in enumerate(quiz_data):
@@ -176,8 +205,5 @@ if st.button("Submit"):
             st.error(f"Q{idx+1}: Wrong ❌ (Correct: {correct_ans})")
 
     st.write(f" Your Score: {score} / {len(quiz_data)}")
-    if score >= 12:
-        st.header(" Pass 👌")
-    else:
-        st.header(':cry: Fail')
+    
     
